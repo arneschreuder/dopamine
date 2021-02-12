@@ -22,6 +22,6 @@
   },
   "projects": {
     "accounts-data": { "tags": [] },
-    "accounts-data-client": { "tags": [] }
+    "accounts-data-lib": { "tags": [] }
   }
 }

@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package dopamine;
+
+service AccountsDataService {
+  rpc Create (CreateDTO) returns (Account) {}
+}
+
+message CreateDTO {
+  string email = 1;
+  string password = 2;
+}
+
+message Account {
+  string id = 1;
+  string email = 2;
+}
