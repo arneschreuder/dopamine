@@ -20,9 +20,5 @@
       }
     }
   },
-  "projects": {
-    "accounts-data": { "tags": [] },
-    "accounts-data-lib": { "tags": [] },
-    "temporary": { "tags": [] }
-  }
+  "projects": { "accounts-data": { "tags": [] } }
 }

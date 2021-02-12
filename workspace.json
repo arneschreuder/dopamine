@@ -9,16 +9,12 @@
       "targets": {
         "build": {
           "executor": "@nrwl/node:build",
-          "outputs": [
-            "{options.outputPath}"
-          ],
+          "outputs": ["{options.outputPath}"],
           "options": {
             "outputPath": "dist/apps/accounts-data",
             "main": "apps/accounts-data/src/main.ts",
             "tsConfig": "apps/accounts-data/tsconfig.app.json",
-            "assets": [
-              "apps/accounts-data/src/assets"
-            ]
+            "assets": ["apps/accounts-data/src/assets"]
           },
           "configurations": {
             "production": {
@@ -36,133 +32,23 @@
         },
         "serve": {
           "executor": "@nrwl/node:execute",
-          "options": {
-            "buildTarget": "accounts-data:build"
-          }
+          "options": { "buildTarget": "accounts-data:build" }
         },
         "lint": {
           "executor": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "apps/accounts-data/**/*.ts"
-            ]
-          }
+          "options": { "lintFilePatterns": ["apps/accounts-data/**/*.ts"] }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/apps/accounts-data"
-          ],
+          "outputs": ["coverage/apps/accounts-data"],
           "options": {
             "jestConfig": "apps/accounts-data/jest.config.js",
             "passWithNoTests": true
           }
         }
       }
-    },
-    "accounts-data-lib": {
-      "root": "libs/accounts-data-lib",
-      "sourceRoot": "libs/accounts-data-lib/src",
-      "projectType": "library",
-      "targets": {
-        "lint": {
-          "executor": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/accounts-data-lib/**/*.ts"
-            ]
-          }
-        },
-        "test": {
-          "executor": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/accounts-data-lib"
-          ],
-          "options": {
-            "jestConfig": "libs/accounts-data-lib/jest.config.js",
-            "passWithNoTests": true
-          }
-        },
-        "build": {
-          "executor": "@nrwl/node:package",
-          "outputs": [
-            "{options.outputPath}"
-          ],
-          "options": {
-            "outputPath": "dist/libs/accounts-data-lib",
-            "tsConfig": "libs/accounts-data-lib/tsconfig.lib.json",
-            "packageJson": "libs/accounts-data-lib/package.json",
-            "main": "libs/accounts-data-lib/src/index.ts",
-            "assets": [
-              "libs/accounts-data-lib/**/*.md",
-              "libs/accounts-data-lib/**/*.proto"
-            ]
-          }
-        }
-      }
-    },
-    "temporary": {
-      "root": "apps/temporary",
-      "sourceRoot": "apps/temporary/src",
-      "projectType": "application",
-      "prefix": "temporary",
-      "targets": {
-        "build": {
-          "executor": "@nrwl/node:build",
-          "outputs": [
-            "{options.outputPath}"
-          ],
-          "options": {
-            "outputPath": "dist/apps/temporary",
-            "main": "apps/temporary/src/main.ts",
-            "tsConfig": "apps/temporary/tsconfig.app.json",
-            "assets": [
-              "apps/temporary/src/assets"
-            ]
-          },
-          "configurations": {
-            "production": {
-              "optimization": true,
-              "extractLicenses": true,
-              "inspect": false,
-              "fileReplacements": [
-                {
-                  "replace": "apps/temporary/src/environments/environment.ts",
-                  "with": "apps/temporary/src/environments/environment.prod.ts"
-                }
-              ]
-            }
-          }
-        },
-        "serve": {
-          "executor": "@nrwl/node:execute",
-          "options": {
-            "buildTarget": "temporary:build"
-          }
-        },
-        "lint": {
-          "executor": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "apps/temporary/**/*.ts"
-            ]
-          }
-        },
-        "test": {
-          "executor": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/apps/temporary"
-          ],
-          "options": {
-            "jestConfig": "apps/temporary/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      }
     }
   },
-  "cli": {
-    "defaultCollection": "@nrwl/nest"
-  },
+  "cli": { "defaultCollection": "@nrwl/nest" },
   "defaultProject": "accounts-data"
 }
