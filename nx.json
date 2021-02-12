@@ -20,5 +20,5 @@
       }
     }
   },
-  "projects": { "accounts-data": { "tags": [] } }
+  "projects": { "accounts-data": { "tags": [] }, "content-db": { "tags": [] } }
 }
