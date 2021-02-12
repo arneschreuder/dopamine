@@ -9,12 +9,16 @@
       "targets": {
         "build": {
           "executor": "@nrwl/node:build",
-          "outputs": ["{options.outputPath}"],
+          "outputs": [
+            "{options.outputPath}"
+          ],
           "options": {
             "outputPath": "dist/apps/accounts-data",
             "main": "apps/accounts-data/src/main.ts",
             "tsConfig": "apps/accounts-data/tsconfig.app.json",
-            "assets": ["apps/accounts-data/src/assets"]
+            "assets": [
+              "apps/accounts-data/src/assets"
+            ]
           },
           "configurations": {
             "production": {
@@ -32,23 +36,92 @@
         },
         "serve": {
           "executor": "@nrwl/node:execute",
-          "options": { "buildTarget": "accounts-data:build" }
+          "options": {
+            "buildTarget": "accounts-data:build"
+          }
         },
         "lint": {
           "executor": "@nrwl/linter:eslint",
-          "options": { "lintFilePatterns": ["apps/accounts-data/**/*.ts"] }
+          "options": {
+            "lintFilePatterns": [
+              "apps/accounts-data/**/*.ts"
+            ]
+          }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/accounts-data"],
+          "outputs": [
+            "coverage/apps/accounts-data"
+          ],
           "options": {
             "jestConfig": "apps/accounts-data/jest.config.js",
             "passWithNoTests": true
           }
         }
       }
+    },
+    "content-db": {
+      "root": "apps/content-db",
+      "sourceRoot": "apps/content-db/src",
+      "projectType": "application",
+      "prefix": "content-db",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/node:build",
+          "outputs": [
+            "{options.outputPath}"
+          ],
+          "options": {
+            "outputPath": "dist/apps/content-db",
+            "main": "apps/content-db/src/main.ts",
+            "tsConfig": "apps/content-db/tsconfig.app.json",
+            "assets": [
+              "apps/content-db/src/assets"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/content-db/src/environments/environment.ts",
+                  "with": "apps/content-db/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "executor": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "content-db:build"
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/content-db/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/apps/content-db"
+          ],
+          "options": {
+            "jestConfig": "apps/content-db/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   },
-  "cli": { "defaultCollection": "@nrwl/nest" },
+  "cli": {
+    "defaultCollection": "@nrwl/nest"
+  },
   "defaultProject": "accounts-data"
 }
