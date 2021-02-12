@@ -6,7 +6,7 @@ export const APP_OPTIONS: NestApplicationContextOptions & GrpcOptions = {
   transport: Transport.GRPC,
   options: {
     url: 'localhost:5000',
-    package: 'ai.schreuder.dopamine',
+    package: 'dopamine',
     protoPath: join(
       __dirname,
       './../../libs/accounts-data-lib/accounts-data.proto'
