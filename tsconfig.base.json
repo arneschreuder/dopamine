@@ -15,9 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@dopamine/accounts-data-client": [
-        "libs/accounts-data-client/src/index.ts"
-      ]
+      "@dopamine/accounts-data-lib": ["libs/accounts-data-lib/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
