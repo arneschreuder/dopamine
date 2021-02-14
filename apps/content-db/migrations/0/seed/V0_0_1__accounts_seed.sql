@@ -1,3 +1,8 @@
 INSERT INTO accounts(
-	id, authentication_id, handle)
-	VALUES ('11111111111111111111111111111111111', '11111111111111111111111111111111111', 'arneschreudder');
+	authentication_id,
+	handle
+)
+VALUES (
+	'11111111111111111111111111111111111',
+	'arneschreudder'
+);

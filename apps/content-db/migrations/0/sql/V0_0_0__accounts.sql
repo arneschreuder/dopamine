@@ -1,7 +1,9 @@
 SET TIMEZONE='Africa/Johannesburg';
 
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+
 CREATE TABLE accounts (
-    id VARCHAR(35) NOT NULL,
+    id UUID NOT NULL DEFAULT uuid_generate_v4(),
     authentication_id VARCHAR(35) NOT NULL,
     handle VARCHAR(128) NOT NULL,
     description VARCHAR(256),
