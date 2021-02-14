@@ -6,5 +6,6 @@ module.exports = {
     '<rootDir>/apps/temporary',
     '<rootDir>/apps/content-db',
     '<rootDir>/libs/content-db-lib',
+    '<rootDir>/libs/prisma-lib',
   ],
 };

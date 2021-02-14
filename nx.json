@@ -20,5 +20,9 @@
       }
     }
   },
-  "projects": { "accounts-data": { "tags": [] }, "content-db": { "tags": [] } }
+  "projects": {
+    "accounts-data": { "tags": [] },
+    "content-db": { "tags": [] },
+    "prisma-lib": { "tags": [] }
+  }
 }
