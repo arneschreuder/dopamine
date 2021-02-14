@@ -1,10 +1,22 @@
 # Use postgres/example user/password credentials
 version: '3.1'
-
 services:
-  db:
-    image: postgres
-    restart: always
+  content-db:
+    container_name: content-db
     environment:
-      POSTGRES_PASSWORD: example
+      POSTGRES_USER: dopamine
+      POSTGRES_PASSWORD: dopamine
+      POSTGRES_DB: dopamine
+    networks:
+      - dopamine
+    ports:
+      - 5432:5432
+    image: postgres:9
+    restart: unless-stopped
+    volumes:
+      - content-db:/var/lib/postgresql/data
+networks:
+  dopamine:
+volumes:
+  content-db:
       
