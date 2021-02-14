@@ -2,14 +2,17 @@ import { Controller } from '@nestjs/common';
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
 import { GrpcMethod } from '@nestjs/microservices';
 import { CreateCommand } from './commands/create/create.command';
+import { DeleteCommand } from './commands/delete/delete.command';
 import { AccountQuery } from './queries/account/account.query';
 import { AccountsQuery } from './queries/accounts/accounts.query';
 import { AccountRequest } from './requests/account.request';
 import { AccountsRequest } from './requests/accounts.request';
 import { CreateRequest } from './requests/create.request';
+import { DeleteRequest } from './requests/delete.request';
 import { AccountResponse } from './responses/account.response';
 import { AccountsResponse } from './responses/accounts.response';
 import { CreateResponse } from './responses/create.response';
+import { DeleteResponse } from './responses/delete.response';
 
 @Controller('app')
 export class AppController {
@@ -34,5 +37,11 @@ export class AppController {
   async create(req: CreateRequest) {
     const account = await this.commandBus.execute(new CreateCommand(req));
     return new CreateResponse(account);
+  }
+
+  @GrpcMethod('AccountsData', 'Delete')
+  async delete(req: DeleteRequest) {
+    const account = await this.commandBus.execute(new DeleteCommand(req));
+    return new DeleteResponse(account);
   }
 }

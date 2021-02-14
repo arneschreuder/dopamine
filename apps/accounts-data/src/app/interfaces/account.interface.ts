@@ -1,4 +1,7 @@
 export interface IAccount {
   id: string;
-  email: string;
+  authenticationId: string;
+  handle: string;
+  description: string;
+  created: Date;
 }
