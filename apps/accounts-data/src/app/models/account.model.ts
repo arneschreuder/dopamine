@@ -4,15 +4,21 @@ import * as util from 'util';
 import { IAccount } from '../interfaces/account.interface';
 
 export class Account extends AggregateRoot implements IAccount {
-  private readonly logger = new Logger(Account.name);
-
   id: string;
-  email: string;
+  authenticationId: string;
+  handle: string;
+  description: string;
+  created: Date;
+
+  private readonly logger = new Logger(Account.name);
 
   constructor(dto: IAccount) {
     super();
     this.logger.debug(util.inspect(dto));
     this.id = dto.id;
-    this.email = dto.email;
+    this.authenticationId = dto.authenticationId;
+    this.handle = dto.handle;
+    this.description = dto.description;
+    this.created = dto.created;
   }
 }

@@ -1,6 +1,6 @@
 export class CreateRequest {
   constructor(
-    public readonly email: string,
-    public readonly password: string
+    public readonly authenticationId: string,
+    public readonly handle: string
   ) {}
 }

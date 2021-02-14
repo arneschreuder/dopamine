@@ -2,20 +2,26 @@ syntax = "proto3";
 
 package ai.schreuder.dopamine;
 
+import "google/protobuf/struct.proto";
+
 service AccountsData {
   rpc Account (AccountRequest) returns (AccountResponse) {}
   rpc Accounts (AccountsRequest) returns (AccountsResponse) {}
   rpc Create (CreateRequest) returns (CreateResponse) {}
+  rpc Delete (DeleteRequest) returns (DeleteResponse) {}
 }
 
 message Account {
-  string id = 1;
-  string email = 2;
+  required string id = 1;
+  string authenticationId = 2;
+  string handle = 3;
+  NullableString description = 4;
+  string created = 5;
 }
 
 message AccountRequest {
   optional string id = 1;
-  optional string email = 2;
+  optional string handle = 2;
 }
 
 message AccountResponse {
@@ -30,10 +36,26 @@ message AccountsResponse {
 }
 
 message CreateRequest {
-  string email = 1;
-  string password = 2;
+  string authenticationId = 1;
+  string handle = 2;
 }
 
 message CreateResponse {
   optional Account account = 1;
+}
+
+message DeleteRequest {
+  string id = 1;
+  string handle = 2;
+}
+
+message DeleteResponse {
+  optional Account account = 1;
+}
+
+message NullableString {
+  oneof kind {
+    google.protobuf.NullValue null = 1;
+    string data = 2;
+  }
 }

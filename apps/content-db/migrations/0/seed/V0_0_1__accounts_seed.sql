@@ -3,6 +3,6 @@ INSERT INTO accounts(
 	handle
 )
 VALUES (
-	'11111111111111111111111111111111111',
-	'arneschreudder'
+	'c32b11e5-98b8-4ffe-a300-2fa9edfd4abf',
+	'test'
 );
