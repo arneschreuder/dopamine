@@ -5,5 +5,6 @@ module.exports = {
     '<rootDir>/libs/accounts-data-lib',
     '<rootDir>/apps/temporary',
     '<rootDir>/apps/content-db',
+    '<rootDir>/libs/content-db-lib',
   ],
 };

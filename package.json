@@ -9,7 +9,6 @@
     "test": "nx test",
     "lint": "nx workspace-lint && nx lint",
     "e2e": "nx e2e",
-    "clean": "rm -rf dist",
     "affected:apps": "nx affected:apps",
     "affected:libs": "nx affected:libs",
     "affected:build": "nx affected:build",
@@ -24,7 +23,10 @@
     "update": "nx migrate latest",
     "workspace-generator": "nx workspace-generator",
     "dep-graph": "nx dep-graph",
-    "help": "nx help"
+    "help": "nx help",
+    "content-db:flyway:migrate": "cd apps/content-db && CONTENT_DB_PASSWORD=dopamine flyway migrate",
+    "content-db:prisma:introspect": "yarn prisma introspect --schema=apps/content-db/schema.prisma",
+    "content-db:prisma:generate": "yarn prisma generate --schema=apps/content-db/schema.prisma"
   },
   "private": true,
   "dependencies": {
@@ -34,6 +36,7 @@
     "@nestjs/cqrs": "^7.0.1",
     "@nestjs/microservices": "^7.6.12",
     "@nestjs/platform-express": "^7.0.0",
+    "@prisma/client": "^2.16.1",
     "grpc": "^1.24.5",
     "reflect-metadata": "^0.1.13",
     "rxjs": "~6.6.3",
