@@ -10,8 +10,8 @@ export class AccountsHandler implements IQueryHandler<AccountsQuery> {
 
   constructor(private readonly repository: AccountsRepository) {}
 
-  async execute(query: AccountsQuery) {
-    this.logger.debug(util.inspect(query));
-    return this.repository.accounts(query.req);
+  async execute({ request }: AccountsQuery) {
+    this.logger.debug(util.inspect(request));
+    return this.repository.accounts(request);
   }
 }

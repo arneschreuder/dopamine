@@ -1,7 +1,7 @@
 import { Logger } from '@nestjs/common';
 import { CommandHandler, EventPublisher, ICommandHandler } from '@nestjs/cqrs';
-import { Prisma } from '@prisma/client';
 import * as util from 'util';
+import { Account } from '../../models/account.model';
 import { AccountsRepository } from '../../repository/accounts.repository';
 import { CreateCommand } from './create.command';
 
@@ -14,19 +14,23 @@ export class CreateHandler implements ICommandHandler<CreateCommand> {
     private readonly publisher: EventPublisher
   ) {}
 
-  async execute(command: CreateCommand) {
-    this.logger.debug(util.inspect(command));
+  async execute({ request }: CreateCommand) {
+    this.logger.debug(util.inspect(request));
 
-    const { req } = command;
-    const data: Prisma.AccountCreateInput = {
-      authenticationId: req.authenticationId,
-      handle: req.handle,
-    };
-    // CHECK IF USERNAME UNIQUE
+    // Check unique constraint
+    let account = await this.repository.account({ handle: request.handle });
 
-    const account = this.publisher.mergeObjectContext(
-      await this.repository.create(data)
-    );
+    // Unique constraint failed
+    if (account) {
+      throw new Error('Account already exists');
+    }
+
+    // Create new account
+    account = this.publisher.mergeObjectContext(new Account());
+
+    // Events
+    // TODO: Add transactions here
+    account.create(request);
     account.commit();
 
     return account;

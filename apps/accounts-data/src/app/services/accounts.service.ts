@@ -1,0 +1,63 @@
+import { PrismaService } from '@dopamine/prisma-lib';
+import { Injectable, Logger } from '@nestjs/common';
+import { Account, Prisma } from '@prisma/client';
+import * as util from 'util';
+
+@Injectable()
+export class AccountsService {
+  private readonly logger = new Logger(AccountsService.name);
+
+  constructor(private prisma: PrismaService) {}
+
+  async account(
+    accountWhereUniqueInput: Prisma.AccountWhereUniqueInput
+  ): Promise<Account | null> {
+    this.logger.debug(util.inspect(accountWhereUniqueInput));
+    return this.prisma.account.findUnique({
+      where: accountWhereUniqueInput,
+    });
+  }
+
+  async accounts(params: {
+    skip?: number;
+    take?: number;
+    cursor?: Prisma.AccountWhereUniqueInput;
+    where?: Prisma.AccountWhereInput;
+    orderBy?: Prisma.AccountOrderByInput;
+  }): Promise<Account[]> {
+    this.logger.debug(util.inspect(params));
+    const { skip, take, cursor, where, orderBy } = params;
+    return this.prisma.account.findMany({
+      skip,
+      take,
+      cursor,
+      where,
+      orderBy,
+    });
+  }
+
+  async create(data: Prisma.AccountCreateInput): Promise<Account> {
+    this.logger.debug(util.inspect(data));
+    return this.prisma.account.create({
+      data,
+    });
+  }
+
+  async update(params: {
+    where: Prisma.AccountWhereUniqueInput;
+    data: Prisma.AccountUpdateInput;
+  }): Promise<Account> {
+    this.logger.debug(util.inspect(params));
+    const { where, data } = params;
+    return this.prisma.account.update({
+      data,
+      where,
+    });
+  }
+
+  async delete(where: Prisma.AccountWhereUniqueInput): Promise<Account> {
+    return this.prisma.account.delete({
+      where,
+    });
+  }
+}

@@ -1,5 +1,5 @@
 import { CreateRequest } from '../../requests/create.request';
 
 export class CreateCommand {
-  constructor(public readonly req: CreateRequest) {}
+  constructor(public readonly request: CreateRequest) {}
 }
