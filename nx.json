@@ -23,6 +23,8 @@
   "projects": {
     "accounts-data": { "tags": [] },
     "content-db": { "tags": [] },
-    "prisma-lib": { "tags": [] }
+    "prisma-lib": { "tags": [] },
+    "cache": { "tags": [] },
+    "cache-db": { "tags": [] }
   }
 }

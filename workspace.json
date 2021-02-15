@@ -158,6 +158,124 @@
           }
         }
       }
+    },
+    "cache": {
+      "root": "apps/cache",
+      "sourceRoot": "apps/cache/src",
+      "projectType": "application",
+      "prefix": "cache",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/node:build",
+          "outputs": [
+            "{options.outputPath}"
+          ],
+          "options": {
+            "outputPath": "dist/apps/cache",
+            "main": "apps/cache/src/main.ts",
+            "tsConfig": "apps/cache/tsconfig.app.json",
+            "assets": [
+              "apps/cache/src/assets"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/cache/src/environments/environment.ts",
+                  "with": "apps/cache/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "executor": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "cache:build"
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/cache/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/apps/cache"
+          ],
+          "options": {
+            "jestConfig": "apps/cache/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "cache-db": {
+      "root": "apps/cache-db",
+      "sourceRoot": "apps/cache-db/src",
+      "projectType": "application",
+      "prefix": "cache-db",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/node:build",
+          "outputs": [
+            "{options.outputPath}"
+          ],
+          "options": {
+            "outputPath": "dist/apps/cache-db",
+            "main": "apps/cache-db/src/main.ts",
+            "tsConfig": "apps/cache-db/tsconfig.app.json",
+            "assets": [
+              "apps/cache-db/src/assets"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/cache-db/src/environments/environment.ts",
+                  "with": "apps/cache-db/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "executor": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "cache-db:build"
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/cache-db/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/apps/cache-db"
+          ],
+          "options": {
+            "jestConfig": "apps/cache-db/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   },
   "cli": {

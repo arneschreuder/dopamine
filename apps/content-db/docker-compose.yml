@@ -17,6 +17,8 @@ services:
       - content-db:/var/lib/postgresql/data
 networks:
   dopamine:
+    external:
+      name: dopamine
 volumes:
   content-db:
       

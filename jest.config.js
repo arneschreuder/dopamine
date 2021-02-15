@@ -7,5 +7,7 @@ module.exports = {
     '<rootDir>/apps/content-db',
     '<rootDir>/libs/content-db-lib',
     '<rootDir>/libs/prisma-lib',
+    '<rootDir>/apps/cache',
+    '<rootDir>/apps/cache-db',
   ],
 };

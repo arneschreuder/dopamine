@@ -1,0 +1,21 @@
+# Use postgres/example user/password credentials
+version: '3.1'
+services:
+  cache-db:
+    container_name: cache-db
+    command: redis-server --requirepass dopamine --appendonly yes
+    networks:
+      - dopamine
+    ports:
+      - 6379:6379
+    image: redis:6
+    restart: unless-stopped
+    volumes:
+      - cache-db:/data
+networks:
+  dopamine:
+    external:
+      name: dopamine
+volumes:
+  cache-db:
+      
