@@ -1,3 +1,3 @@
 export class DeleteRequest {
-  constructor(public readonly id: string, public readonly handle: string) {}
+  constructor(public readonly id: string) {}
 }

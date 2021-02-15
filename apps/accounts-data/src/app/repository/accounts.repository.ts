@@ -1,77 +1,77 @@
-import { PrismaService } from '@dopamine/prisma-lib';
 import { Injectable, Logger } from '@nestjs/common';
-import { Prisma } from '@prisma/client';
 import * as util from 'util';
-import { IAccount } from '../interfaces/account.interface';
 import { Account } from '../models/account.model';
+import { AccountRequest } from '../requests/account.request';
+import { AccountsRequest } from '../requests/accounts.request';
+import { AccountsService } from '../services/accounts.service';
 
 @Injectable()
 export class AccountsRepository {
   private readonly logger = new Logger(AccountsRepository.name);
 
-  constructor(private prisma: PrismaService) {}
+  constructor(private service: AccountsService) {}
 
-  async account(
-    accountWhereUniqueInput: Prisma.AccountWhereUniqueInput
-  ): Promise<Account | null> {
-    this.logger.debug(util.inspect(accountWhereUniqueInput));
-    return this.prisma.account
-      .findUnique({
-        where: accountWhereUniqueInput,
+  async account({ id, handle }: AccountRequest): Promise<Account | null> {
+    this.logger.debug(util.inspect(id));
+    this.logger.debug(util.inspect(handle));
+
+    return await this.service
+      .account({
+        id,
+        handle,
       })
-      .then((record) => (record ? new Account(record as IAccount) : null));
+      .then((record) => (record ? new Account(record) : null));
   }
 
-  async accounts(params: {
-    skip?: number;
-    take?: number;
-    cursor?: Prisma.AccountWhereUniqueInput;
-    where?: Prisma.AccountWhereInput;
-    orderBy?: Prisma.AccountOrderByInput;
-  }): Promise<Account[]> {
-    this.logger.debug(util.inspect(params));
-    const { skip, take, cursor, where, orderBy } = params;
-    return this.prisma.account
-      .findMany({
-        skip,
-        take,
-        cursor,
-        where,
-        orderBy,
-      })
-      .then((records) =>
-        records.map((record) => new Account(record as IAccount))
-      );
+  async accounts(request: AccountsRequest): Promise<Account[]> {
+    this.logger.debug(util.inspect(request));
+
+    return await this.service
+      .accounts({})
+      .then((records) => records.map((record) => new Account(record)));
   }
 
-  async create(data: Prisma.AccountCreateInput): Promise<Account> {
-    this.logger.debug(util.inspect(data));
-    return this.prisma.account
-      .create({
-        data,
-      })
-      .then((record) => (record ? new Account(record as IAccount) : null));
+  async create({
+    id,
+    authenticationId,
+    handle,
+    description,
+    created,
+  }: Account): Promise<Account> {
+    this.logger.debug(util.inspect(id));
+    this.logger.debug(util.inspect(authenticationId));
+    this.logger.debug(util.inspect(handle));
+    this.logger.debug(util.inspect(description));
+    this.logger.debug(util.inspect(created));
+
+    return await this.service
+      .create({ id, authenticationId, handle, description, created })
+      .then((record) => (record ? new Account(record) : null));
   }
 
-  async update(params: {
-    where: Prisma.AccountWhereUniqueInput;
-    data: Prisma.AccountUpdateInput;
-  }): Promise<Account> {
-    this.logger.debug(util.inspect(params));
-    const { where, data } = params;
-    return this.prisma.account
+  async update({ id, handle, description }: Account): Promise<Account> {
+    this.logger.debug(util.inspect(id));
+    this.logger.debug(util.inspect(handle));
+    this.logger.debug(util.inspect(description));
+
+    return await this.service
       .update({
-        data,
-        where,
+        where: {
+          id,
+        },
+        data: {
+          handle,
+          description,
+        },
       })
-      .then((record) => (record ? new Account(record as IAccount) : null));
+      .then((record) => (record ? new Account(record) : null));
   }
 
-  async delete(where: Prisma.AccountWhereUniqueInput): Promise<Account> {
-    return this.prisma.account
-      .delete({
-        where,
-      })
-      .then((record) => (record ? new Account(record as IAccount) : null));
+  async delete({ id }: Account): Promise<Account> {
+    this.logger.debug(util.inspect(id));
+
+    return await this.service
+      .delete({ id })
+      .then((record) => (record ? new Account(record) : null));
   }
 }

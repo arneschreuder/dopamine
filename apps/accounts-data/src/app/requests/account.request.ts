@@ -1,3 +1,3 @@
 export class AccountRequest {
-  constructor(public readonly id: string, public readonly email: string) {}
+  constructor(public readonly id?: string, public readonly handle?: string) {}
 }
