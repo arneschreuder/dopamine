@@ -1061,6 +1061,86 @@
           }
         }
       }
+    },
+    "fixtures": {
+      "root": "libs/fixtures",
+      "sourceRoot": "libs/fixtures/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/fixtures/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/libs/fixtures"
+          ],
+          "options": {
+            "jestConfig": "libs/fixtures/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "executor": "@nrwl/node:package",
+          "outputs": [
+            "{options.outputPath}"
+          ],
+          "options": {
+            "outputPath": "dist/libs/fixtures",
+            "tsConfig": "libs/fixtures/tsconfig.lib.json",
+            "packageJson": "libs/fixtures/package.json",
+            "main": "libs/fixtures/src/index.ts",
+            "assets": [
+              "libs/fixtures/*.md"
+            ]
+          }
+        }
+      }
+    },
+    "prisma": {
+      "root": "libs/prisma",
+      "sourceRoot": "libs/prisma/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/prisma/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/libs/prisma"
+          ],
+          "options": {
+            "jestConfig": "libs/prisma/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "executor": "@nrwl/node:package",
+          "outputs": [
+            "{options.outputPath}"
+          ],
+          "options": {
+            "outputPath": "dist/libs/prisma",
+            "tsConfig": "libs/prisma/tsconfig.lib.json",
+            "packageJson": "libs/prisma/package.json",
+            "main": "libs/prisma/src/index.ts",
+            "assets": [
+              "libs/prisma/*.md"
+            ]
+          }
+        }
+      }
     }
   },
   "cli": {

@@ -35,7 +35,9 @@
       "@dopamine/directives": ["libs/directives/src/index.ts"],
       "@dopamine/guards": ["libs/guards/src/index.ts"],
       "@dopamine/controllers": ["libs/controllers/src/index.ts"],
-      "@dopamine/modules": ["libs/modules/src/index.ts"]
+      "@dopamine/modules": ["libs/modules/src/index.ts"],
+      "@dopamine/fixtures": ["libs/fixtures/src/index.ts"],
+      "@dopamine/prisma": ["libs/prisma/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

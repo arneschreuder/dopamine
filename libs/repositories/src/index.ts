@@ -1,1 +1,1 @@
-export * from './lib/repositories.module';
+export * from './accounts-data';

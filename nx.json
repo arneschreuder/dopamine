@@ -45,6 +45,8 @@
     "directives": { "tags": [] },
     "guards": { "tags": [] },
     "controllers": { "tags": [] },
-    "modules": { "tags": [] }
+    "modules": { "tags": [] },
+    "fixtures": { "tags": [] },
+    "prisma": { "tags": [] }
   }
 }

@@ -1,8 +1,8 @@
+import { AccountQuery } from '@dopamine/queries';
 import { Logger } from '@nestjs/common';
 import { IQueryHandler, QueryHandler } from '@nestjs/cqrs';
 import * as util from 'util';
 import { AccountsRepository } from '../../repository/accounts.repository';
-import { AccountQuery } from './account.query';
 
 @QueryHandler(AccountQuery)
 export class AccountHandler implements IQueryHandler<AccountQuery> {

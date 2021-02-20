@@ -30,5 +30,7 @@ module.exports = {
     '<rootDir>/libs/guards',
     '<rootDir>/libs/controllers',
     '<rootDir>/libs/modules',
+    '<rootDir>/libs/fixtures',
+    '<rootDir>/libs/prisma',
   ],
 };
