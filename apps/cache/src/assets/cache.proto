@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+package ai.schreuder.dopamine;
+
+service Cache {
+  rpc Get (GetRequest) returns (GetResponse) {}
+  rpc Set (SetRequest) returns (SetResponse) {}
+  rpc Delete (DeleteRequest) returns (DeleteResponse) {}
+  rpc Reset (ResetRequest) returns (ResetResponse) {}
+}
+
+message GetRequest {
+  string key = 1;
+}
+
+message GetResponse {
+  optional string value = 1;
+}
+
+message SetRequest {
+  string key = 1;
+  string value = 2;
+}
+
+message SetResponse {
+  string value = 1;
+}
+
+message DeleteRequest {
+  string key = 1;
+}
+
+message DeleteResponse {
+  string value = 1;
+}
+
+message ResetRequest {
+
+}
+
+message ResetResponse {
+  
+}

@@ -13,7 +13,7 @@ export class AccountsService {
     accountWhereUniqueInput: Prisma.AccountWhereUniqueInput
   ): Promise<Account | null> {
     this.logger.debug(util.inspect(accountWhereUniqueInput));
-    return this.prisma.account.findUnique({
+    return await this.prisma.account.findUnique({
       where: accountWhereUniqueInput,
     });
   }
@@ -27,7 +27,7 @@ export class AccountsService {
   }): Promise<Account[]> {
     this.logger.debug(util.inspect(params));
     const { skip, take, cursor, where, orderBy } = params;
-    return this.prisma.account.findMany({
+    return await this.prisma.account.findMany({
       skip,
       take,
       cursor,
@@ -38,7 +38,7 @@ export class AccountsService {
 
   async create(data: Prisma.AccountCreateInput): Promise<Account> {
     this.logger.debug(util.inspect(data));
-    return this.prisma.account.create({
+    return await this.prisma.account.create({
       data,
     });
   }
@@ -49,14 +49,14 @@ export class AccountsService {
   }): Promise<Account> {
     this.logger.debug(util.inspect(params));
     const { where, data } = params;
-    return this.prisma.account.update({
+    return await this.prisma.account.update({
       data,
       where,
     });
   }
 
   async delete(where: Prisma.AccountWhereUniqueInput): Promise<Account> {
-    return this.prisma.account.delete({
+    return await this.prisma.account.delete({
       where,
     });
   }
