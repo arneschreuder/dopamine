@@ -1,98 +1,94 @@
-import {
-  AccountRequest,
-  AccountsRequest,
-  CreateAccountRequest,
-  DeleteAccountRequest,
-  UpdateAccountRequest,
+import type {
+  IAccountRequest,
+  IAccountsRequest,
+  ICreateAccountRequest,
+  IDeleteAccountRequest,
+  IUpdateAccountRequest,
 } from '@dopamine/requests';
-import {
-  AccountResponse,
-  AccountsResponse,
-  CreateAccountResponse,
-  DeleteAccountResponse,
-  UpdateAccountResponse,
+import type {
+  IAccountResponse,
+  IAccountsResponse,
+  ICreateAccountResponse,
+  IDeleteAccountResponse,
+  IUpdateAccountResponse,
 } from '@dopamine/responses';
 import { Controller, Logger } from '@nestjs/common';
-import { CommandBus, QueryBus } from '@nestjs/cqrs';
 import { GrpcMethod, RpcException } from '@nestjs/microservices';
 import * as util from 'util';
-import {
-  CreateAccountCommand,
-  DeleteAccountCommand,
-  UpdateAccountCommand,
-} from './commands';
-import { AccountQuery, AccountsQuery } from './queries';
+import { AccountsDataService } from './accounts-data/accounts-data.service';
 
 @Controller('app')
 export class AppController {
   private readonly logger = new Logger(AppController.name);
 
-  constructor(
-    private readonly commandBus: CommandBus,
-    private readonly queryBus: QueryBus
-  ) {}
+  constructor(private readonly service: AccountsDataService) {}
 
   @GrpcMethod('AccountsData', 'Account')
-  async account(request: AccountRequest) {
+  async account(request: IAccountRequest): Promise<IAccountResponse> {
     this.logger.debug(util.inspect(request));
 
     try {
-      const account = await this.queryBus.execute(new AccountQuery(request));
-      return new AccountResponse(account);
+      return {
+        account: await this.service.account(request),
+      };
     } catch (error) {
       throw new RpcException(error.message);
     }
   }
 
   @GrpcMethod('AccountsData', 'Accounts')
-  async accounts(request: AccountsRequest) {
+  async accounts(request: IAccountsRequest): Promise<IAccountsResponse> {
     this.logger.debug(util.inspect(request));
 
     try {
-      const accounts = await this.queryBus.execute(new AccountsQuery(request));
-      return new AccountsResponse(accounts);
+      return {
+        accounts: await this.service.accounts(request),
+      };
     } catch (error) {
       throw new RpcException(error.message);
     }
   }
 
   @GrpcMethod('AccountsData', 'Create')
-  async create(request: CreateAccountRequest) {
+  async create(
+    request: ICreateAccountRequest
+  ): Promise<ICreateAccountResponse> {
     this.logger.debug(util.inspect(request));
 
     try {
-      const account = await this.commandBus.execute(
-        new CreateAccountCommand(request)
-      );
-      return new CreateAccountResponse(account);
+      return {
+        account: await this.service.create(request),
+      };
     } catch (error) {
       throw new RpcException(error.message);
     }
   }
 
   @GrpcMethod('AccountsData', 'Update')
-  async update(request: UpdateAccountRequest) {
+  async update(
+    request: IUpdateAccountRequest
+  ): Promise<IUpdateAccountResponse> {
     this.logger.debug(util.inspect(request));
 
     try {
-      const account = await this.commandBus.execute(
-        new UpdateAccountCommand(request)
-      );
-      this.logger.debug(util.inspect(account));
-      return new UpdateAccountResponse(account);
+      return {
+        account: await this.service.update(request),
+      };
     } catch (error) {
       throw new RpcException(error.message);
     }
   }
 
   @GrpcMethod('AccountsData', 'Delete')
-  async delete(request: DeleteAccountRequest) {
+  async delete(
+    request: IDeleteAccountRequest
+  ): Promise<IDeleteAccountResponse> {
     this.logger.debug(util.inspect(request));
+
     try {
-      const account = await this.commandBus.execute(
-        new DeleteAccountCommand(request)
-      );
-      return new DeleteAccountResponse(account);
+      return {
+        account: await this.service.delete(request),
+      };
     } catch (error) {
       throw new RpcException(error.message);
     }

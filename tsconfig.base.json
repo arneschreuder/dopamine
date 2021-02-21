@@ -15,11 +15,10 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@dopamine/dtos": ["libs/dtos/src/index.ts"],
-      "@dopamine/interfaces": ["libs/interfaces/src/index.ts"],
       "@dopamine/services": ["libs/services/src/index.ts"],
       "@dopamine/responses": ["libs/responses/src/index.ts"],
-      "@dopamine/requests": ["libs/requests/src/index.ts"]
+      "@dopamine/requests": ["libs/requests/src/index.ts"],
+      "@dopamine/models": ["libs/models/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

@@ -189,44 +189,6 @@
         }
       }
     },
-    "dtos": {
-      "root": "libs/dtos",
-      "sourceRoot": "libs/dtos/src",
-      "projectType": "library",
-      "targets": {
-        "lint": {
-          "executor": "@nrwl/linter:eslint",
-          "options": { "lintFilePatterns": ["libs/dtos/**/*.ts"] }
-        },
-        "test": {
-          "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/dtos"],
-          "options": {
-            "jestConfig": "libs/dtos/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      }
-    },
-    "interfaces": {
-      "root": "libs/interfaces",
-      "sourceRoot": "libs/interfaces/src",
-      "projectType": "library",
-      "targets": {
-        "lint": {
-          "executor": "@nrwl/linter:eslint",
-          "options": { "lintFilePatterns": ["libs/interfaces/**/*.ts"] }
-        },
-        "test": {
-          "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/interfaces"],
-          "options": {
-            "jestConfig": "libs/interfaces/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      }
-    },
     "services": {
       "root": "libs/services",
       "sourceRoot": "libs/services/src",
@@ -279,6 +241,25 @@
           "outputs": ["coverage/libs/requests"],
           "options": {
             "jestConfig": "libs/requests/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "models": {
+      "root": "libs/models",
+      "sourceRoot": "libs/models/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": { "lintFilePatterns": ["libs/models/**/*.ts"] }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/models"],
+          "options": {
+            "jestConfig": "libs/models/jest.config.js",
             "passWithNoTests": true
           }
         }

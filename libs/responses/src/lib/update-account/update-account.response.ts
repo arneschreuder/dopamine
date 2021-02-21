@@ -1,5 +1,5 @@
-import { IAccount } from '@dopamine/interfaces';
+import { IAccount } from '@dopamine/models';
 
-export class UpdateAccountResponse {
-  constructor(public readonly account: IAccount) {}
+export interface IUpdateAccountResponse {
+  account: IAccount;
 }

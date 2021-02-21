@@ -5,6 +5,8 @@
   "scripts": {
     "nx": "nx",
     "start": "nx serve",
+    "start:accounts-data": "nx serve accounts-data",
+    "start:accounts-db": "docker-compose -f apps/content-db/docker-compose.yml up",
     "build": "nx build",
     "test": "nx test",
     "lint": "nx workspace-lint && nx lint",

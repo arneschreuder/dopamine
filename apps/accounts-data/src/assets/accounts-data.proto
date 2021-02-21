@@ -19,12 +19,12 @@ message Account {
 }
 
 message AccountRequest {
-  optional string id = 1;
-  optional string handle = 2;
+  string id = 1;
+  string handle = 2;
 }
 
 message AccountResponse {
-  optional Account account = 1;
+  Account account = 1;
 }
 
 message AccountsRequest {
@@ -40,17 +40,17 @@ message CreateRequest {
 }
 
 message CreateResponse {
-  optional Account account = 1;
+  Account account = 1;
 }
 
 message UpdateRequest {
   string id = 1;
-  optional string handle = 2;
-  optional string description = 3;
+  string handle = 2;
+  string description = 3;
 }
 
 message UpdateResponse {
-  optional Account account = 1;
+  Account account = 1;
 }
 
 message DeleteRequest {
@@ -58,5 +58,5 @@ message DeleteRequest {
 }
 
 message DeleteResponse {
-  optional Account account = 1;
+  Account account = 1;
 }

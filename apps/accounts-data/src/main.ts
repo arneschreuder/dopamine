@@ -2,21 +2,27 @@
  * This is not a production server yet!
  * This is only a minimal backend to get started.
  */
-
 import { Logger } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
-import { MicroserviceOptions } from '@nestjs/microservices';
+import { MicroserviceOptions, Transport } from '@nestjs/microservices';
+import { join } from 'path';
 import { AppModule } from './app/app.module';
-import { APP_OPTIONS } from './main.config';
 
 async function bootstrap() {
   const app = await NestFactory.createMicroservice<MicroserviceOptions>(
     AppModule,
-    APP_OPTIONS
+    {
+      transport: Transport.GRPC,
+      options: {
+        url: 'localhost:5000',
+        package: 'ai.schreuder.dopamine',
+        protoPath: join(__dirname, 'assets/accounts-data.proto'),
+      },
+    }
   );
 
   app.listen(() => {
-    Logger.log(`Listening at ${APP_OPTIONS.options.url}`);
+    Logger.log(`Listening at localhost:5000`);
   });
 }
 
