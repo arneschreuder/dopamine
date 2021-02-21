@@ -1,15 +1,15 @@
-import { ContentDBRepository } from '@dopamine/repositories';
+import { AccountCreatedEvent } from '@dopamine/events';
 import { Logger } from '@nestjs/common';
 import { EventsHandler, IEventHandler } from '@nestjs/cqrs';
 import * as util from 'util';
-import { AccountCreatedEvent } from '@dopamine/events';
+import { AccountsDataRepository } from '../../accounts-data.repository';
 
 @EventsHandler(AccountCreatedEvent)
 export class AccountCreatedHandler
   implements IEventHandler<AccountCreatedEvent> {
   private readonly logger = new Logger(AccountCreatedHandler.name);
 
-  constructor(private readonly repository: ContentDBRepository) {}
+  constructor(private readonly repository: AccountsDataRepository) {}
 
   async handle({ account }: AccountCreatedEvent) {
     this.logger.debug(util.inspect(account));

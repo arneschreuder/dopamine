@@ -1,8 +1,8 @@
 import { DeleteAccountCommand } from '@dopamine/commands';
-import { ContentDBRepository } from '@dopamine/repositories';
 import { Logger } from '@nestjs/common';
 import { CommandHandler, EventPublisher, ICommandHandler } from '@nestjs/cqrs';
 import * as util from 'util';
+import { AccountsDataRepository } from '../../accounts-data.repository';
 
 @CommandHandler(DeleteAccountCommand)
 export class DeleteAccountHandler
@@ -10,7 +10,7 @@ export class DeleteAccountHandler
   private readonly logger = new Logger(DeleteAccountHandler.name);
 
   constructor(
-    private readonly repository: ContentDBRepository,
+    private readonly repository: AccountsDataRepository,
     private readonly publisher: EventPublisher
   ) {}
 

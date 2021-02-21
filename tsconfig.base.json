@@ -23,7 +23,6 @@
       "@dopamine/commands": ["libs/commands/src/index.ts"],
       "@dopamine/events": ["libs/events/src/index.ts"],
       "@dopamine/queries": ["libs/queries/src/index.ts"],
-      "@dopamine/repositories": ["libs/repositories/src/index.ts"],
       "@dopamine/protobufs": ["libs/protobufs/src/index.ts"]
     }
   },

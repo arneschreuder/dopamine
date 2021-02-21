@@ -5,8 +5,8 @@ import { Prisma } from '@prisma/client';
 import * as util from 'util';
 
 @Injectable()
-export class ContentDBRepository {
-  private readonly logger = new Logger(ContentDBRepository.name);
+export class AccountsDataRepository {
+  private readonly logger = new Logger(AccountsDataRepository.name);
 
   constructor(private prisma: PrismaService) {}
 

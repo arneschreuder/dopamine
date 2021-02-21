@@ -34,7 +34,6 @@
     "commands": { "tags": [] },
     "events": { "tags": [] },
     "queries": { "tags": [] },
-    "repositories": { "tags": [] },
     "protobufs": { "tags": [] }
   }
 }

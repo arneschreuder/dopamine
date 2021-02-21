@@ -388,25 +388,6 @@
         }
       }
     },
-    "repositories": {
-      "root": "libs/repositories",
-      "sourceRoot": "libs/repositories/src",
-      "projectType": "library",
-      "targets": {
-        "lint": {
-          "executor": "@nrwl/linter:eslint",
-          "options": { "lintFilePatterns": ["libs/repositories/**/*.ts"] }
-        },
-        "test": {
-          "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/repositories"],
-          "options": {
-            "jestConfig": "libs/repositories/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      }
-    },
     "protobufs": {
       "root": "libs/protobufs",
       "sourceRoot": "libs/protobufs/lib",
