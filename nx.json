@@ -22,7 +22,6 @@
   },
   "projects": {
     "accounts-data": { "tags": [] },
-    "content-db": { "tags": [] },
     "cache": { "tags": [] },
     "cache-db": { "tags": [] },
     "services": { "tags": [] },
@@ -34,6 +33,7 @@
     "commands": { "tags": [] },
     "events": { "tags": [] },
     "queries": { "tags": [] },
-    "protobufs": { "tags": [] }
+    "protobufs": { "tags": [] },
+    "application-db": { "tags": [] }
   }
 }

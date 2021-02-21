@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+package ai.schreuder.dopamine;
+
+import "ai/schreuder/dopamine/requests/account.request.proto";
+import "ai/schreuder/dopamine/responses/account.response.proto";
+import "ai/schreuder/dopamine/requests/accounts.request.proto";
+import "ai/schreuder/dopamine/responses/accounts.response.proto";
+import "ai/schreuder/dopamine/requests/create-account.request.proto";
+import "ai/schreuder/dopamine/responses/create-account.response.proto";
+import "ai/schreuder/dopamine/requests/delete-account.request.proto";
+import "ai/schreuder/dopamine/responses/delete-account.response.proto";
+import "ai/schreuder/dopamine/requests/update-account.request.proto";
+import "ai/schreuder/dopamine/responses/update-account.response.proto";
+
+service AccountsData {
+  rpc Account (requests.AccountRequest) returns (responses.AccountResponse) {}
+  rpc Accounts (requests.AccountsRequest) returns (responses.AccountsResponse) {}
+  rpc Create (requests.CreateAccountRequest) returns (responses.CreateAccountResponse) {}
+  rpc Update (requests.UpdateAccountRequest) returns (responses.UpdateAccountResponse) {}
+  rpc Delete (requests.DeleteAccountRequest) returns (dopamine.responses.DeleteAccountResponse) {}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

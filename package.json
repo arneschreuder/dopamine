@@ -5,8 +5,6 @@
   "scripts": {
     "nx": "nx",
     "start": "nx serve",
-    "start:accounts-data": "nx serve accounts-data",
-    "start:accounts-db": "docker-compose -f apps/content-db/docker-compose.yml up",
     "build": "nx build",
     "test": "nx test",
     "lint": "nx workspace-lint && nx lint",
@@ -26,9 +24,10 @@
     "workspace-generator": "nx workspace-generator",
     "dep-graph": "nx dep-graph",
     "help": "nx help",
-    "content-db:flyway:migrate": "cd apps/content-db && CONTENT_DB_PASSWORD=dopamine flyway migrate",
-    "content-db:prisma:introspect": "yarn prisma introspect --schema=apps/content-db/schema.prisma",
-    "content-db:prisma:generate": "yarn prisma generate --schema=apps/content-db/schema.prisma"
+    "application-db:start": "docker-compose -f apps/application-db/docker-compose.yml up",
+    "application-db:flyway:migrate": "cd apps/application-db && CONTENT_DB_PASSWORD=dopamine flyway migrate",
+    "application-db:prisma:introspect": "yarn prisma introspect --schema=apps/application-db/schema.prisma",
+    "application-db:prisma:generate": "yarn prisma generate --schema=apps/application-db/schema.prisma"
   },
   "private": true,
   "dependencies": {
@@ -69,11 +68,14 @@
     "dotenv": "6.2.0",
     "eslint": "7.10.0",
     "eslint-config-prettier": "6.0.0",
+    "grpc-tools": "^1.10.0",
     "jest": "26.2.2",
     "prettier": "2.2.1",
     "prisma": "^2.16.1",
+    "protoc-gen-grpc": "^1.4.4",
     "ts-jest": "26.4.0",
     "ts-node": "~9.1.1",
+    "ts-protoc-gen": "^0.14.0",
     "typescript": "~4.0.3"
   }
 }

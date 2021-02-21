@@ -16,7 +16,14 @@ async function bootstrap() {
       options: {
         url: 'localhost:5000',
         package: 'ai.schreuder.dopamine',
-        protoPath: join(__dirname, '../../libs/protobufs/accounts-data.proto'),
+        protoPath: join(
+          __dirname,
+          '../../libs/protobufs/ai/schreuder/dopamine/',
+          'accounts-data.proto'
+        ),
+        loader: {
+          includeDirs: [join(__dirname, '../../libs/protobufs')],
+        },
       },
     }
   );

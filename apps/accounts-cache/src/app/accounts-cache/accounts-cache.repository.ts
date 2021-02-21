@@ -39,14 +39,16 @@ export class AccountsDataRepository {
       .then((accounts) => accounts.map((account) => new Account(account)));
   }
 
-  async create(data: Prisma.AccountCreateInput): Promise<Account | null> {
+  async createAccount(
+    data: Prisma.AccountCreateInput
+  ): Promise<Account | null> {
     this.logger.debug(util.inspect(data));
     return await this.prisma.account
       .create({ data })
       .then((account) => (account ? new Account(account) : null));
   }
 
-  async update(params: {
+  async updateAccount(params: {
     where: Prisma.AccountWhereUniqueInput;
     data: Prisma.AccountUpdateInput;
   }): Promise<Account | null> {
@@ -60,7 +62,9 @@ export class AccountsDataRepository {
       .then((account) => (account ? new Account(account) : null));
   }
 
-  async delete(where: Prisma.AccountWhereUniqueInput): Promise<Account | null> {
+  async deleteAccount(
+    where: Prisma.AccountWhereUniqueInput
+  ): Promise<Account | null> {
     return await this.prisma.account
       .delete({
         where,

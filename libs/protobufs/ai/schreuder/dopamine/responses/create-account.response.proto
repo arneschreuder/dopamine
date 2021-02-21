@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+package ai.schreuder.dopamine.responses;
+
+import "ai/schreuder/dopamine/models/account.model.proto";
+
+message CreateAccountResponse {
+  ai.schreuder.dopamine.models.Account account = 1;
+}

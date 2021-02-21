@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+package ai.schreuder.dopamine.requests;
+
+message UpdateAccountRequest {
+  string id = 1;
+  string handle = 2;
+  string description = 3;
+}

@@ -13,7 +13,7 @@ export class AccountUpdatedHandler
 
   async handle({ account }: AccountUpdatedEvent) {
     this.logger.debug(util.inspect(account));
-    return await this.repository.update({
+    return await this.repository.updateAccount({
       where: {
         id: account.id,
       },

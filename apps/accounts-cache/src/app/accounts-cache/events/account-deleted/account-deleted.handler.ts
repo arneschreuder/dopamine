@@ -13,7 +13,7 @@ export class AccountDeletedHandler
 
   async handle({ account }: AccountDeletedEvent) {
     this.logger.debug(util.inspect(account));
-    return await this.repository.delete({
+    return await this.repository.deleteAccount({
       id: account.id,
     });
   }

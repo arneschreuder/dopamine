@@ -13,7 +13,7 @@ export class AccountCreatedHandler
 
   async handle({ account }: AccountCreatedEvent) {
     this.logger.debug(util.inspect(account));
-    return await this.repository.create({
+    return await this.repository.createAccount({
       id: account.id,
       authenticationId: account.authenticationId,
       handle: account.handle,

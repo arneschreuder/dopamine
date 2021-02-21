@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package ai.schreuder.dopamine.models;
+
+message Account {
+  string id = 1;
+  string authenticationId = 2;
+  string handle = 3;
+  string description = 4;
+  string created = 5;
+}

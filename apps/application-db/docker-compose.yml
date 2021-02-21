@@ -1,8 +1,8 @@
 # Use postgres/example user/password credentials
 version: '3.1'
 services:
-  content-db:
-    container_name: content-db
+  application-db:
+    container_name: application-db
     environment:
       POSTGRES_USER: dopamine
       POSTGRES_PASSWORD: dopamine
@@ -14,11 +14,11 @@ services:
     image: postgres:9
     restart: unless-stopped
     volumes:
-      - content-db:/var/lib/postgresql/data
+      - application-db:/var/lib/postgresql/data
 networks:
   dopamine:
     external:
       name: dopamine
 volumes:
-  content-db:
+  application-db:
       

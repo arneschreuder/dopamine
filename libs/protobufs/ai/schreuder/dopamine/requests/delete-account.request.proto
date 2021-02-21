@@ -1,0 +1,7 @@
+syntax = "proto3";
+
+package ai.schreuder.dopamine.requests;
+
+message DeleteAccountRequest {
+  string id = 1;
+}

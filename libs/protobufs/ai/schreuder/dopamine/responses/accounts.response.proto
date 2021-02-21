@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package ai.schreuder.dopamine.responses;
+
+import "ai/schreuder/dopamine/models/account.model.proto";
+
+message AccountsResponse {
+  repeated ai.schreuder.dopamine.models.Account accounts = 1;
+}
+  
