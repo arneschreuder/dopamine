@@ -23,7 +23,6 @@
   "projects": {
     "accounts-data": { "tags": [] },
     "content-db": { "tags": [] },
-    "prisma-lib": { "tags": [] },
     "cache": { "tags": [] },
     "cache-db": { "tags": [] },
     "services": { "tags": [] },
@@ -44,9 +43,10 @@
     "pipes": { "tags": [] },
     "directives": { "tags": [] },
     "guards": { "tags": [] },
-    "controllers": { "tags": [] },
     "modules": { "tags": [] },
     "fixtures": { "tags": [] },
-    "prisma": { "tags": [] }
+    "prisma": { "tags": [] },
+    "testing-lib": { "tags": [] },
+    "testing-lib2": { "tags": [] }
   }
 }

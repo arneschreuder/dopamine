@@ -15,7 +15,6 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@dopamine/prisma-lib": ["libs/prisma-lib/src/index.ts"],
       "@dopamine/services": ["libs/services/src/index.ts"],
       "@dopamine/repositories": ["libs/repositories/src/index.ts"],
       "@dopamine/models": ["libs/models/src/index.ts"],
@@ -34,10 +33,11 @@
       "@dopamine/pipes": ["libs/pipes/src/index.ts"],
       "@dopamine/directives": ["libs/directives/src/index.ts"],
       "@dopamine/guards": ["libs/guards/src/index.ts"],
-      "@dopamine/controllers": ["libs/controllers/src/index.ts"],
       "@dopamine/modules": ["libs/modules/src/index.ts"],
       "@dopamine/fixtures": ["libs/fixtures/src/index.ts"],
-      "@dopamine/prisma": ["libs/prisma/src/index.ts"]
+      "@dopamine/prisma": ["libs/prisma/src/index.ts"],
+      "@dopamine/testing-lib": ["libs/testing-lib/src/index.ts"],
+      "@dopamine/testing-lib2": ["libs/testing-lib2/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
