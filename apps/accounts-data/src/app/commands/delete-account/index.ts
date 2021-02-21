@@ -1,2 +1,2 @@
-export * from './delete.command';
-export * from './delete.handler';
+export * from './delete-account.command';
+export * from './delete-account.handler';

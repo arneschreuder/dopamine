@@ -1,22 +1,27 @@
+import {
+  AccountRequest,
+  AccountsRequest,
+  CreateAccountRequest,
+  DeleteAccountRequest,
+  UpdateAccountRequest,
+} from '@dopamine/requests';
+import {
+  AccountResponse,
+  AccountsResponse,
+  CreateAccountResponse,
+  DeleteAccountResponse,
+  UpdateAccountResponse,
+} from '@dopamine/responses';
 import { Controller, Logger } from '@nestjs/common';
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
 import { GrpcMethod, RpcException } from '@nestjs/microservices';
 import * as util from 'util';
-import { CreateCommand } from './commands/create/create.command';
-import { DeleteCommand } from './commands/delete/delete.command';
-import { UpdateCommand } from './commands/update';
-import { AccountQuery } from './queries/account/account.query';
-import { AccountsQuery } from './queries/accounts/accounts.query';
-import { UpdateRequest } from './requests';
-import { AccountRequest } from './requests/account.request';
-import { AccountsRequest } from './requests/accounts.request';
-import { CreateRequest } from './requests/create.request';
-import { DeleteRequest } from './requests/delete.request';
-import { AccountResponse } from './responses/account.response';
-import { AccountsResponse } from './responses/accounts.response';
-import { CreateResponse } from './responses/create.response';
-import { DeleteResponse } from './responses/delete.response';
-import { UpdateResponse } from './responses/update.response';
+import {
+  CreateAccountCommand,
+  DeleteAccountCommand,
+  UpdateAccountCommand,
+} from './commands';
+import { AccountQuery, AccountsQuery } from './queries';
 
 @Controller('app')
 export class AppController {
@@ -52,36 +57,42 @@ export class AppController {
   }
 
   @GrpcMethod('AccountsData', 'Create')
-  async create(request: CreateRequest) {
+  async create(request: CreateAccountRequest) {
     this.logger.debug(util.inspect(request));
 
     try {
-      const account = await this.commandBus.execute(new CreateCommand(request));
-      return new CreateResponse(account);
+      const account = await this.commandBus.execute(
+        new CreateAccountCommand(request)
+      );
+      return new CreateAccountResponse(account);
     } catch (error) {
       throw new RpcException(error.message);
     }
   }
 
   @GrpcMethod('AccountsData', 'Update')
-  async update(request: UpdateRequest) {
+  async update(request: UpdateAccountRequest) {
     this.logger.debug(util.inspect(request));
 
     try {
-      const account = await this.commandBus.execute(new UpdateCommand(request));
+      const account = await this.commandBus.execute(
+        new UpdateAccountCommand(request)
+      );
       this.logger.debug(util.inspect(account));
-      return new UpdateResponse(account);
+      return new UpdateAccountResponse(account);
     } catch (error) {
       throw new RpcException(error.message);
     }
   }
 
   @GrpcMethod('AccountsData', 'Delete')
-  async delete(request: DeleteRequest) {
+  async delete(request: DeleteAccountRequest) {
     this.logger.debug(util.inspect(request));
     try {
-      const account = await this.commandBus.execute(new DeleteCommand(request));
-      return new DeleteResponse(account);
+      const account = await this.commandBus.execute(
+        new DeleteAccountCommand(request)
+      );
+      return new DeleteAccountResponse(account);
     } catch (error) {
       throw new RpcException(error.message);
     }

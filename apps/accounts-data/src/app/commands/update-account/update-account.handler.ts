@@ -1,12 +1,13 @@
-import { UpdateAccountCommand } from '@dopamine/commands';
-import { AccountsDataRepository } from '@dopamine/repositories';
 import { Logger } from '@nestjs/common';
 import { CommandHandler, EventPublisher, ICommandHandler } from '@nestjs/cqrs';
 import * as util from 'util';
+import { AccountsDataRepository } from '../../repositories';
+import { UpdateAccountCommand } from './update-account.command';
 
 @CommandHandler(UpdateAccountCommand)
-export class UpdateHandler implements ICommandHandler<UpdateAccountCommand> {
-  private readonly logger = new Logger(UpdateHandler.name);
+export class UpdateAccountHandler
+  implements ICommandHandler<UpdateAccountCommand> {
+  private readonly logger = new Logger(UpdateAccountHandler.name);
 
   constructor(
     private readonly repository: AccountsDataRepository,
@@ -16,29 +17,26 @@ export class UpdateHandler implements ICommandHandler<UpdateAccountCommand> {
   async execute({ request }: UpdateAccountCommand) {
     this.logger.debug(util.inspect(request));
 
-    // Find context
-    let account = await this.repository.account({ id: request.id });
-    this.logger.debug(util.inspect(account));
+    // Get context
+    const account = this.publisher.mergeObjectContext(
+      await this.repository.account({ id: request.id })
+    );
 
     // Check if found
-    if (!account) {
+    if (account.id !== request.id) {
       throw new Error('Account not found');
     }
 
-    // Check unique constraint
-    if (request.handle && request.handle !== account.handle) {
+    if (account.handle && account.handle !== request.handle) {
+      // Check unique constraint
       const collision = await this.repository.account({
         handle: request.handle,
       });
 
-      // Unique constraint failed
-      if (collision) {
+      if (collision.handle === request.handle) {
         throw new Error('Account handle already exists');
       }
     }
-
-    // Assign context
-    account = this.publisher.mergeObjectContext(account);
 
     // Events
     account.update(request);

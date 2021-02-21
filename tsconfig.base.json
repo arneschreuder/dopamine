@@ -15,29 +15,11 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@dopamine/services": ["libs/services/src/index.ts"],
-      "@dopamine/repositories": ["libs/repositories/src/index.ts"],
-      "@dopamine/models": ["libs/models/src/index.ts"],
       "@dopamine/dtos": ["libs/dtos/src/index.ts"],
-      "@dopamine/queries": ["libs/queries/src/index.ts"],
-      "@dopamine/requests": ["libs/requests/src/index.ts"],
-      "@dopamine/responses": ["libs/responses/src/index.ts"],
-      "@dopamine/enums": ["libs/enums/src/index.ts"],
-      "@dopamine/types": ["libs/types/src/index.ts"],
-      "@dopamine/events": ["libs/events/src/index.ts"],
-      "@dopamine/commands": ["libs/commands/src/index.ts"],
-      "@dopamine/protobufs": ["libs/protobufs/src/index.ts"],
-      "@dopamine/configs": ["libs/configs/src/index.ts"],
       "@dopamine/interfaces": ["libs/interfaces/src/index.ts"],
-      "@dopamine/classes": ["libs/classes/src/index.ts"],
-      "@dopamine/pipes": ["libs/pipes/src/index.ts"],
-      "@dopamine/directives": ["libs/directives/src/index.ts"],
-      "@dopamine/guards": ["libs/guards/src/index.ts"],
-      "@dopamine/modules": ["libs/modules/src/index.ts"],
-      "@dopamine/fixtures": ["libs/fixtures/src/index.ts"],
-      "@dopamine/prisma": ["libs/prisma/src/index.ts"],
-      "@dopamine/testing-lib": ["libs/testing-lib/src/index.ts"],
-      "@dopamine/testing-lib2": ["libs/testing-lib2/src/index.ts"]
+      "@dopamine/services": ["libs/services/src/index.ts"],
+      "@dopamine/responses": ["libs/responses/src/index.ts"],
+      "@dopamine/requests": ["libs/requests/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

@@ -1,2 +1,2 @@
-export * from './update.command';
-export * from './update.handler';
+export * from './update-account.command';
+export * from './update-account.handler';

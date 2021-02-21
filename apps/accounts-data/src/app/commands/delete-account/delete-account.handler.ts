@@ -1,8 +1,8 @@
-import { DeleteAccountCommand } from '@dopamine/commands';
-import { AccountsDataRepository } from '@dopamine/repositories';
 import { Logger } from '@nestjs/common';
 import { CommandHandler, EventPublisher, ICommandHandler } from '@nestjs/cqrs';
 import * as util from 'util';
+import { AccountsDataRepository } from '../../repositories';
+import { DeleteAccountCommand } from './delete-account.command';
 
 @CommandHandler(DeleteAccountCommand)
 export class DeleteAccountHandler
@@ -17,17 +17,15 @@ export class DeleteAccountHandler
   async execute({ request }: DeleteAccountCommand) {
     this.logger.debug(util.inspect(request));
 
-    // Find context
-    let account = await this.repository.account({ id: request.id });
-    this.logger.debug(util.inspect(account));
+    // Get context
+    const account = this.publisher.mergeObjectContext(
+      await this.repository.account({ id: request.id })
+    );
 
     // Check if found
-    if (!account) {
+    if (account.id !== request.id) {
       throw new Error('Account not found');
     }
-
-    // Assign context
-    account = this.publisher.mergeObjectContext(account);
 
     // Events
     account.delete(request);
