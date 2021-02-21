@@ -1,0 +1,62 @@
+syntax = "proto3";
+
+package ai.schreuder.dopamine;
+
+service AccountsData {
+  rpc Account (AccountRequest) returns (AccountResponse) {}
+  rpc Accounts (AccountsRequest) returns (AccountsResponse) {}
+  rpc Create (CreateRequest) returns (CreateResponse) {}
+  rpc Update (UpdateRequest) returns (UpdateResponse) {}
+  rpc Delete (DeleteRequest) returns (DeleteResponse) {}
+}
+
+message Account {
+  string id = 1;
+  string authenticationId = 2;
+  string handle = 3;
+  string description = 4;
+  string created = 5;
+}
+
+message AccountRequest {
+  string id = 1;
+  string handle = 2;
+}
+
+message AccountResponse {
+  Account account = 1;
+}
+
+message AccountsRequest {
+}
+
+message AccountsResponse {
+  repeated Account accounts = 1;
+}
+
+message CreateRequest {
+  string authenticationId = 1;
+  string handle = 2;
+}
+
+message CreateResponse {
+  Account account = 1;
+}
+
+message UpdateRequest {
+  string id = 1;
+  string handle = 2;
+  string description = 3;
+}
+
+message UpdateResponse {
+  Account account = 1;
+}
+
+message DeleteRequest {
+  string id = 1;
+}
+
+message DeleteResponse {
+  Account account = 1;
+}

@@ -1,5 +1,3 @@
-import { IAccount } from '@dopamine/models';
+import { AccountResponse } from '../account';
 
-export interface IDeleteAccountResponse {
-  account: IAccount;
-}
+export class DeleteAccountResponse extends AccountResponse {}

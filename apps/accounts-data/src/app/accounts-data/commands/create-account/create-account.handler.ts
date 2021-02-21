@@ -1,10 +1,10 @@
-import { IAccount } from '@dopamine/models';
+import { CreateAccountCommand } from '@dopamine/commands';
+import { IAccount } from '@dopamine/interfaces';
+import { Account } from '@dopamine/models';
+import { ContentDBRepository } from '@dopamine/repositories';
 import { Logger } from '@nestjs/common';
 import { CommandHandler, EventPublisher, ICommandHandler } from '@nestjs/cqrs';
 import * as util from 'util';
-import { AccountsDataRepository } from '../../accounts-data.repository';
-import { Account } from '../../models';
-import { CreateAccountCommand } from './create-account.command';
 
 @CommandHandler(CreateAccountCommand)
 export class CreateAccountHandler
@@ -12,7 +12,7 @@ export class CreateAccountHandler
   private readonly logger = new Logger(CreateAccountHandler.name);
 
   constructor(
-    private readonly repository: AccountsDataRepository,
+    private readonly repository: ContentDBRepository,
     private readonly publisher: EventPublisher
   ) {}
 

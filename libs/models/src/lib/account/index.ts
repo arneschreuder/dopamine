@@ -1,1 +1,1 @@
-export * from './account.interface';
+export * from './account.model';

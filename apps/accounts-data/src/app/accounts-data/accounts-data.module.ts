@@ -1,7 +1,7 @@
+import { ContentDBRepository } from '@dopamine/repositories';
 import { PrismaService } from '@dopamine/services';
 import { Module } from '@nestjs/common';
 import { CqrsModule } from '@nestjs/cqrs';
-import { AccountsDataRepository } from './accounts-data.repository';
 import { AccountsDataService } from './accounts-data.service';
 import {
   CreateAccountHandler,
@@ -31,7 +31,7 @@ export const QUERY_HANDLERS = [AccountHandler, AccountsHandler];
   exports: [AccountsDataService],
   imports: [CqrsModule],
   providers: [
-    AccountsDataRepository,
+    ContentDBRepository,
     AccountsDataService,
     PrismaService,
     ...COMMAND_HANDLERS,

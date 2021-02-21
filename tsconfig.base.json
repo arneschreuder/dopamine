@@ -18,7 +18,13 @@
       "@dopamine/services": ["libs/services/src/index.ts"],
       "@dopamine/responses": ["libs/responses/src/index.ts"],
       "@dopamine/requests": ["libs/requests/src/index.ts"],
-      "@dopamine/models": ["libs/models/src/index.ts"]
+      "@dopamine/models": ["libs/models/src/index.ts"],
+      "@dopamine/interfaces": ["libs/interfaces/src/index.ts"],
+      "@dopamine/commands": ["libs/commands/src/index.ts"],
+      "@dopamine/events": ["libs/events/src/index.ts"],
+      "@dopamine/queries": ["libs/queries/src/index.ts"],
+      "@dopamine/repositories": ["libs/repositories/src/index.ts"],
+      "@dopamine/protobufs": ["libs/protobufs/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

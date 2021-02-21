@@ -34,5 +34,6 @@ module.exports = {
     '<rootDir>/libs/prisma',
     '<rootDir>/libs/testing-lib',
     '<rootDir>/libs/testing-lib2',
+    '<rootDir>/apps/accounts-cache',
   ],
 };

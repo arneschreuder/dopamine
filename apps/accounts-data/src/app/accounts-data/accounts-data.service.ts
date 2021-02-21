@@ -1,20 +1,20 @@
 import {
-  IAccountRequest,
-  IAccountsRequest,
-  ICreateAccountRequest,
-  IDeleteAccountRequest,
-  IUpdateAccountRequest,
+  CreateAccountCommand,
+  DeleteAccountCommand,
+  UpdateAccountCommand,
+} from '@dopamine/commands';
+import { Account } from '@dopamine/models';
+import { AccountQuery, AccountsQuery } from '@dopamine/queries';
+import {
+  AccountRequest,
+  AccountsRequest,
+  CreateAccountRequest,
+  DeleteAccountRequest,
+  UpdateAccountRequest,
 } from '@dopamine/requests';
 import { Injectable, Logger } from '@nestjs/common';
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
 import * as util from 'util';
-import {
-  CreateAccountCommand,
-  DeleteAccountCommand,
-  UpdateAccountCommand,
-} from './commands';
-import { Account } from './models';
-import { AccountQuery, AccountsQuery } from './queries';
 
 @Injectable()
 export class AccountsDataService {
@@ -25,35 +25,35 @@ export class AccountsDataService {
     private readonly queryBus: QueryBus
   ) {}
 
-  async account(request: IAccountRequest): Promise<Account> {
+  async account(request: AccountRequest): Promise<Account> {
     this.logger.debug(util.inspect(request));
     return await this.queryBus.execute<AccountQuery, Account>(
       new AccountQuery(request)
     );
   }
 
-  async accounts(request: IAccountsRequest): Promise<Account[]> {
+  async accounts(request: AccountsRequest): Promise<Account[]> {
     this.logger.debug(util.inspect(request));
     return await this.queryBus.execute<AccountsQuery, Account[]>(
       new AccountsQuery(request)
     );
   }
 
-  async create(request: ICreateAccountRequest): Promise<Account> {
+  async create(request: CreateAccountRequest): Promise<Account> {
     this.logger.debug(util.inspect(request));
     return await this.commandBus.execute<CreateAccountCommand>(
       new CreateAccountCommand(request)
     );
   }
 
-  async update(request: IUpdateAccountRequest): Promise<Account> {
+  async update(request: UpdateAccountRequest): Promise<Account> {
     this.logger.debug(util.inspect(request));
     return await this.commandBus.execute<UpdateAccountCommand>(
       new UpdateAccountCommand(request)
     );
   }
 
-  async delete(request: IDeleteAccountRequest): Promise<Account> {
+  async delete(request: DeleteAccountRequest): Promise<Account> {
     this.logger.debug(util.inspect(request));
     return await this.commandBus.execute<DeleteAccountCommand>(
       new DeleteAccountCommand(request)

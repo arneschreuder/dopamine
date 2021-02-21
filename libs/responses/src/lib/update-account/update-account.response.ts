@@ -1,5 +1,3 @@
-import { IAccount } from '@dopamine/models';
+import { AccountResponse } from '../account';
 
-export interface IUpdateAccountResponse {
-  account: IAccount;
-}
+export class UpdateAccountResponse extends AccountResponse {}

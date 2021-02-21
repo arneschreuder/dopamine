@@ -1,5 +1,7 @@
-export interface IUpdateAccountRequest {
-  id: string;
-  handle?: string;
-  description?: string;
+export class UpdateAccountRequest {
+  constructor(
+    public readonly id: string,
+    public readonly handle: string,
+    public readonly description: string
+  ) {}
 }

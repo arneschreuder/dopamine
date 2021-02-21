@@ -1,0 +1,100 @@
+syntax = "proto3";
+
+package ai.schreuder.dopamine;
+
+service AccountsCache {
+  rpc GetAccount (GetAccountRequest) returns (GetAccountResponse) {}
+  rpc GetAccounts (GetAccountsRequest) returns (GetAccountsResponse) {}
+  rpc SetAccount (SetAccountRequest) returns (SetAccountResponse) {}
+  rpc SetAccounts (SetAccountsRequest) returns (SetAccountsResponse) {}
+  rpc DeleteAccount (DeleteAccountRequest) returns (DeleteAccountResponse) {}
+  rpc DeleteAccounts (DeleteAccountsRequest) returns (DeleteAccountsResponse) {}
+  rpc Reset (ResetRequest) returns (ResetResponse) {}
+}
+
+// Model
+message Account {
+  string id = 1;
+  string authenticationId = 2;
+  string handle = 3;
+  string description = 4;
+  string created = 5;
+}
+
+// Requests and Responses
+message AccountRequest {
+  string id = 1;
+  string handle = 2;
+}
+
+message AccountResponse {
+  Account account = 1;
+}
+
+message AccountsRequest {
+}
+
+message AccountsResponse {
+  repeated Account accounts = 1;
+}
+
+// Getters
+message GetAccountRequest {
+  AccountRequest request = 1;
+}
+
+message GetAccountResponse {
+  AccountResponse response = 1;
+}
+
+message GetAccountsRequest {
+  AccountsRequest request = 1;
+}
+
+message GetAccountsResponse {
+  AccountsResponse response = 1;
+}
+
+// Setters
+message SetAccountRequest {
+  AccountRequest request = 1;
+}
+
+message SetAccountResponse {
+  AccountResponse response = 1;
+}
+
+message SetAccountsRequest {
+  AccountsRequest request = 1;
+}
+
+message SetAccountsResponse {
+  AccountsResponse response = 1;
+}
+
+// Deletes
+
+message DeleteAccountRequest {
+  AccountRequest request = 1;
+}
+
+message DeleteAccountResponse {
+  AccountResponse response = 1;
+}
+
+message DeleteAccountsRequest {
+  AccountsRequest request = 1;
+}
+
+message DeleteAccountsResponse {
+  AccountsResponse response = 1;
+}
+
+// Resets
+message ResetRequest {
+
+}
+
+message ResetResponse {
+
+}

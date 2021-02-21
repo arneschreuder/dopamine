@@ -16,7 +16,7 @@ async function bootstrap() {
       options: {
         url: 'localhost:5000',
         package: 'ai.schreuder.dopamine',
-        protoPath: join(__dirname, 'assets/accounts-data.proto'),
+        protoPath: join(__dirname, '../../libs/protobufs/accounts-data.proto'),
       },
     }
   );

@@ -28,6 +28,13 @@
     "services": { "tags": [] },
     "responses": { "tags": [] },
     "requests": { "tags": [] },
-    "models": { "tags": [] }
+    "models": { "tags": [] },
+    "accounts-cache": { "tags": [] },
+    "interfaces": { "tags": [] },
+    "commands": { "tags": [] },
+    "events": { "tags": [] },
+    "queries": { "tags": [] },
+    "repositories": { "tags": [] },
+    "protobufs": { "tags": [] }
   }
 }

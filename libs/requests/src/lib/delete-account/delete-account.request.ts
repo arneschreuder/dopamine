@@ -1,3 +1,3 @@
-export interface IDeleteAccountRequest {
-  id: string;
+export class DeleteAccountRequest {
+  constructor(public readonly id: string) {}
 }

@@ -1,8 +1,8 @@
+import { ContentDBRepository } from '@dopamine/repositories';
 import { Logger } from '@nestjs/common';
 import { CommandHandler, EventPublisher, ICommandHandler } from '@nestjs/cqrs';
 import * as util from 'util';
-import { AccountsDataRepository } from '../../accounts-data.repository';
-import { UpdateAccountCommand } from './update-account.command';
+import { UpdateAccountCommand } from '@dopamine/commands';
 
 @CommandHandler(UpdateAccountCommand)
 export class UpdateAccountHandler
@@ -10,7 +10,7 @@ export class UpdateAccountHandler
   private readonly logger = new Logger(UpdateAccountHandler.name);
 
   constructor(
-    private readonly repository: AccountsDataRepository,
+    private readonly repository: ContentDBRepository,
     private readonly publisher: EventPublisher
   ) {}
 

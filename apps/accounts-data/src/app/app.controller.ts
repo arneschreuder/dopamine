@@ -1,16 +1,16 @@
 import type {
-  IAccountRequest,
-  IAccountsRequest,
-  ICreateAccountRequest,
-  IDeleteAccountRequest,
-  IUpdateAccountRequest,
+  AccountRequest,
+  AccountsRequest,
+  CreateAccountRequest,
+  DeleteAccountRequest,
+  UpdateAccountRequest,
 } from '@dopamine/requests';
 import type {
-  IAccountResponse,
-  IAccountsResponse,
-  ICreateAccountResponse,
-  IDeleteAccountResponse,
-  IUpdateAccountResponse,
+  AccountResponse,
+  AccountsResponse,
+  CreateAccountResponse,
+  DeleteAccountResponse,
+  UpdateAccountResponse,
 } from '@dopamine/responses';
 import { Controller, Logger } from '@nestjs/common';
 import { GrpcMethod, RpcException } from '@nestjs/microservices';
@@ -24,7 +24,7 @@ export class AppController {
   constructor(private readonly service: AccountsDataService) {}
 
   @GrpcMethod('AccountsData', 'Account')
-  async account(request: IAccountRequest): Promise<IAccountResponse> {
+  async account(request: AccountRequest): Promise<AccountResponse> {
     this.logger.debug(util.inspect(request));
 
     try {
@@ -37,7 +37,7 @@ export class AppController {
   }
 
   @GrpcMethod('AccountsData', 'Accounts')
-  async accounts(request: IAccountsRequest): Promise<IAccountsResponse> {
+  async accounts(request: AccountsRequest): Promise<AccountsResponse> {
     this.logger.debug(util.inspect(request));
 
     try {
@@ -50,9 +50,7 @@ export class AppController {
   }
 
   @GrpcMethod('AccountsData', 'Create')
-  async create(
-    request: ICreateAccountRequest
-  ): Promise<ICreateAccountResponse> {
+  async create(request: CreateAccountRequest): Promise<CreateAccountResponse> {
     this.logger.debug(util.inspect(request));
 
     try {
@@ -65,9 +63,7 @@ export class AppController {
   }
 
   @GrpcMethod('AccountsData', 'Update')
-  async update(
-    request: IUpdateAccountRequest
-  ): Promise<IUpdateAccountResponse> {
+  async update(request: UpdateAccountRequest): Promise<UpdateAccountResponse> {
     this.logger.debug(util.inspect(request));
 
     try {
@@ -80,9 +76,7 @@ export class AppController {
   }
 
   @GrpcMethod('AccountsData', 'Delete')
-  async delete(
-    request: IDeleteAccountRequest
-  ): Promise<IDeleteAccountResponse> {
+  async delete(request: DeleteAccountRequest): Promise<DeleteAccountResponse> {
     this.logger.debug(util.inspect(request));
 
     try {
